@@ -10,7 +10,9 @@ export default function Footer({ onOpenBookingModal }) {
         <div className="footer-grid">
           <div className="footer-col">
             <a href="#" className="brand-logo" style={{ marginBottom: '16px' }}>
-              <img src="/logo.png" alt="Hayana Travels Logo" className="brand-logo-img" />
+              <div className="logo-badge-wrapper">
+                <img src="/logo.png" alt="Hayana Travels Logo" className="brand-logo-img" />
+              </div>
               <div className="brand-title-box">
                 <span className="brand-title-main">HAYANA</span>
                 <span className="brand-title-sub">TRAVELS</span>
