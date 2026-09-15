@@ -71,11 +71,11 @@ body {
   box-sizing: border-box;
 }
 
-/* Ticker Bar (Image 1) */
+/* Ticker Bar */
 .top-ticker-bar {
   width: 100%;
-  background: #0a0a08;
-  border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+  background: #080806;
+  border-bottom: 1px solid rgba(229, 193, 88, 0.22);
   padding: 10px 0;
   overflow: hidden;
   white-space: nowrap;
@@ -84,7 +84,7 @@ body {
   display: flex;
   align-items: center;
   gap: 16px;
-  color: #e5e5e0;
+  color: #f5f5f0;
   font-size: 0.85rem;
   font-weight: 500;
   width: max-content;
@@ -98,16 +98,17 @@ body {
   color: var(--gold-primary);
 }
 
-/* Navbar (Image 1) */
+/* Navbar Header */
 .navbar {
   width: 100%;
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: rgba(18, 18, 16, 0.95);
+  background: rgba(12, 12, 10, 0.96);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(229, 193, 88, 0.22);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
 }
 .nav-container {
   width: 100%;
@@ -147,7 +148,7 @@ body {
   font-weight: 800;
   letter-spacing: 1.5px;
   text-transform: uppercase;
-  background: linear-gradient(135deg, #fce09b 0%, #d4af37 50%, #b8860b 100%);
+  background: linear-gradient(135deg, #fce09b 0%, #e5c158 50%, #c4951b 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -155,7 +156,7 @@ body {
 .brand-title-sub {
   font-size: 0.68rem;
   font-weight: 700;
-  color: #d6d3d1;
+  color: #e5e5e0;
   letter-spacing: 3px;
   text-transform: uppercase;
 }
@@ -169,13 +170,14 @@ body {
 }
 .nav-link {
   text-decoration: none;
-  color: #d6d3d1;
-  font-weight: 500;
+  color: #e5e5e0;
+  font-weight: 600;
   font-size: 0.94rem;
   transition: var(--transition);
 }
 .nav-link:hover, .nav-link.active {
   color: var(--gold-primary);
+  text-shadow: 0 0 12px rgba(229, 193, 88, 0.4);
 }
 .nav-actions {
   display: flex;
@@ -184,8 +186,8 @@ body {
 }
 .mobile-toggle {
   display: none;
-  background: #282822;
-  border: 1px solid rgba(212, 175, 55, 0.4);
+  background: #1f1f1a;
+  border: 1px solid rgba(229, 193, 88, 0.4);
   color: #ffffff;
   width: 42px;
   height: 42px;
@@ -194,6 +196,16 @@ body {
   cursor: pointer;
   align-items: center;
   justify-content: center;
+}
+
+/* HERO SECTION - DARK LUXURY */
+.dark-luxury-hero {
+  background: radial-gradient(circle at 50% 0%, rgba(229, 193, 88, 0.12) 0%, #0c0c0a 80%);
+  color: #ffffff;
+  padding: 65px 0 85px;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(229, 193, 88, 0.15);
 }
 
 /* VIBRANT WHATSAPP GREEN BUTTONS */
