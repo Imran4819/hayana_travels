@@ -11,6 +11,10 @@ export default function Footer({ onOpenBookingModal }) {
           <div className="footer-col">
             <a href="#" className="brand-logo" style={{ marginBottom: '16px' }}>
               <img src="/logo.png" alt="Hayana Travels Logo" className="brand-logo-img" />
+              <div className="brand-title-box">
+                <span className="brand-title-main">HAYANA</span>
+                <span className="brand-title-sub">TRAVELS</span>
+              </div>
             </a>
 
             <p style={{ fontSize: '0.88rem', color: '#a8a29e', marginBottom: '16px', lineHeight: 1.6 }}>

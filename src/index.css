@@ -5,18 +5,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
 
 :root {
-  --gold-primary: #d4af37;
-  --gold-light: #e6c867;
-  --gold-dark: #b8860b;
-  --gold-subtle: #c9a96e;
+  --gold-primary: #e5c158;
+  --gold-light: #fce09b;
+  --gold-dark: #c4951b;
+  --gold-subtle: #d8b456;
+  --gold-glow: rgba(229, 193, 88, 0.35);
   
-  --bg-dark: #121210;
-  --bg-dark-card: #1c1c18;
+  --bg-dark: #0c0c0a;
+  --bg-dark-card: #161613;
+  --bg-dark-elevated: #1f1f1a;
   --bg-cream: #faf8f5;
   --bg-white: #ffffff;
   
-  --border-gold: rgba(212, 175, 55, 0.3);
-  --border-dark: #2a2a24;
+  --border-gold: rgba(229, 193, 88, 0.35);
+  --border-dark: #262620;
   --border-cream: #e7e4dc;
   
   --text-dark: #1c1917;
@@ -33,7 +35,7 @@
   --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   
   --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-  --shadow-glow: 0 10px 30px -5px rgba(212, 175, 55, 0.2);
+  --shadow-glow: 0 10px 30px -5px rgba(229, 193, 88, 0.25);
   
   --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
