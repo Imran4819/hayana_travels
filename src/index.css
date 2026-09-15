@@ -118,12 +118,44 @@ body {
   box-sizing: border-box;
 }
 
+.brand-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
 .brand-logo-img {
   height: 44px;
   max-height: 48px;
   width: auto;
   object-fit: contain;
   display: block;
+}
+
+.brand-title-box {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.05;
+}
+
+.brand-title-main {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, #fce09b 0%, #d4af37 50%, #b8860b 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.brand-title-sub {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: #d6d3d1;
+  letter-spacing: 3px;
+  text-transform: uppercase;
 }
 
 /* Nav Menu Links */

@@ -40,6 +40,10 @@ export default function Navbar({ onOpenBookingModal }) {
         <div className="nav-container">
           <a href="#" className="brand-logo" aria-label="Hayana Travels Home">
             <img src="/logo.png" alt="Hayana Travels Logo" className="brand-logo-img" />
+            <div className="brand-title-box">
+              <span className="brand-title-main">HAYANA</span>
+              <span className="brand-title-sub">TRAVELS</span>
+            </div>
           </a>
 
           {/* Desktop Menu - Hidden on screens <= 992px */}
@@ -81,7 +85,13 @@ export default function Navbar({ onOpenBookingModal }) {
       {/* LEFT-SIDE OFF-CANVAS SIDEBAR DRAWER */}
       <aside className={`sidebar-drawer ${mobileMenuOpen ? 'active' : ''}`}>
         <div className="sidebar-header">
-          <img src="/logo.png" alt="Hayana Travels Logo" className="brand-logo-img" style={{ height: '36px' }} />
+          <div className="brand-logo">
+            <img src="/logo.png" alt="Hayana Travels Logo" className="brand-logo-img" style={{ height: '36px' }} />
+            <div className="brand-title-box">
+              <span className="brand-title-main" style={{ fontSize: '1.05rem' }}>HAYANA</span>
+              <span className="brand-title-sub" style={{ fontSize: '0.62rem' }}>TRAVELS</span>
+            </div>
+          </div>
           <button 
             className="sidebar-close-btn" 
             onClick={() => setMobileMenuOpen(false)}
