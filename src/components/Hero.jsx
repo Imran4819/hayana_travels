@@ -10,7 +10,7 @@ export default function Hero({ onOpenBookingModal }) {
           </div>
           
           <h1 className="hero-serif-title">
-            Bike Rental & Car Rental in Daman.<br />
+            Best Bike Rental & Car Rental in Daman.<br />
             <span className="serif-gold-text">Hayana Travels</span>
           </h1>
 
