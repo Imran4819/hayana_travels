@@ -281,108 +281,44 @@ export default function PaymentMethods() {
           </div>
         </div>
 
-        {/* BANK ACCOUNT & UPI DETAILS BOX */}
+        {/* UPI DETAILS BOX */}
         <div style={{
-          background: '#ffffff',
-          border: '1px solid var(--border-gold)',
+          background: '#faf8f5',
+          border: '1px dashed var(--gold-primary)',
           borderRadius: 'var(--radius-xl)',
-          padding: '32px 28px',
-          boxShadow: '0 15px 35px rgba(28, 25, 23, 0.06)'
+          padding: '28px 24px',
+          textAlign: 'center',
+          maxWidth: '640px',
+          margin: '0 auto'
         }}>
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-            gap: '32px',
-            alignItems: 'center'
-          }}>
-            {/* Left: Bank Details */}
-            <div>
-              <div className="hero-gold-tag" style={{ marginBottom: '12px' }}>
-                <span className="gold-line"></span> DIRECT BANK TRANSFER
-              </div>
-              <h3 className="card-title-serif" style={{ fontSize: '1.7rem', marginBottom: '16px' }}>
-                Official Bank Account Details
-              </h3>
-              
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', fontSize: '0.92rem' }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', padding: '8px 12px', background: '#faf8f5', borderRadius: '10px', border: '1px solid var(--border-cream)' }}>
-                  <span style={{ color: 'var(--text-muted-dark)' }}>Account Name:</span>
-                  <strong style={{ color: 'var(--text-dark)' }}>{bankDetails.accountName}</strong>
-                </div>
+          <span style={{ fontSize: '0.8rem', fontWeight: 800, color: 'var(--gold-dark)', textTransform: 'uppercase', letterSpacing: '1px' }}>
+            INSTANT UPI PAYMENT ID
+          </span>
 
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '8px 12px', background: '#faf8f5', borderRadius: '10px', border: '1px solid var(--border-cream)' }}>
-                  <div>
-                    <span style={{ color: 'var(--text-muted-dark)', display: 'block', fontSize: '0.78rem' }}>Account Number:</span>
-                    <strong style={{ color: 'var(--gold-dark)', fontSize: '1.05rem', letterSpacing: '1px' }}>{bankDetails.accountNumber}</strong>
-                  </div>
-                  <button 
-                    onClick={() => handleCopy(bankDetails.accountNumber, 'Account Number')}
-                    className="btn btn-sm btn-gold-luxury"
-                    style={{ padding: '6px 14px', fontSize: '0.78rem' }}
-                  >
-                    <i className="fas fa-copy"></i> Copy
-                  </button>
-                </div>
-
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '8px 12px', background: '#faf8f5', borderRadius: '10px', border: '1px solid var(--border-cream)' }}>
-                  <div>
-                    <span style={{ color: 'var(--text-muted-dark)', display: 'block', fontSize: '0.78rem' }}>IFSC Code:</span>
-                    <strong style={{ color: 'var(--blue-dark)', fontSize: '1.05rem', letterSpacing: '1px' }}>{bankDetails.ifscCode}</strong>
-                  </div>
-                  <button 
-                    onClick={() => handleCopy(bankDetails.ifscCode, 'IFSC Code')}
-                    className="btn btn-sm btn-gold-luxury"
-                    style={{ padding: '6px 14px', fontSize: '0.78rem' }}
-                  >
-                    <i className="fas fa-copy"></i> Copy
-                  </button>
-                </div>
-
-                <div style={{ display: 'flex', justifyContent: 'space-between', padding: '8px 12px', background: '#faf8f5', borderRadius: '10px', border: '1px solid var(--border-cream)' }}>
-                  <span style={{ color: 'var(--text-muted-dark)' }}>Bank & Branch:</span>
-                  <strong style={{ color: 'var(--text-dark)', textAlign: 'right' }}>{bankDetails.bankName}</strong>
-                </div>
-              </div>
-            </div>
-
-            {/* Right: UPI ID & Quick QR Payment */}
-            <div style={{
-              background: '#faf8f5',
-              border: '1px dashed var(--gold-primary)',
-              borderRadius: 'var(--radius-lg)',
-              padding: '24px 20px',
-              textAlign: 'center'
-            }}>
-              <span style={{ fontSize: '0.8rem', fontWeight: 800, color: 'var(--gold-dark)', textTransform: 'uppercase', letterSpacing: '1px' }}>
-                INSTANT UPI PAYMENT
-              </span>
-
-              <div style={{ margin: '14px 0', fontSize: '1.3rem', fontWeight: 800, color: 'var(--text-dark)' }}>
-                {upiId}
-              </div>
-
-              <div style={{ display: 'flex', gap: '10px', justifyContent: 'center', flexWrap: 'wrap', marginBottom: '16px' }}>
-                <button 
-                  onClick={() => handleCopy(upiId, 'UPI ID')}
-                  className="btn btn-gold-luxury btn-sm"
-                >
-                  <i className="fas fa-copy"></i> Copy UPI ID
-                </button>
-                <a 
-                  href={upiPayLink}
-                  className="btn dark-whatsapp-btn btn-sm"
-                  style={{ background: 'linear-gradient(135deg, #0284c7, #0369a1) !important' }}
-                >
-                  <i className="fas fa-bolt"></i> Pay via Any UPI App
-                </a>
-              </div>
-
-              <p style={{ fontSize: '0.8rem', color: 'var(--text-muted-dark)', lineHeight: 1.5 }}>
-                <i className="fas fa-shield-alt" style={{ color: '#10b981', marginRight: '4px' }}></i>
-                Supports PhonePe, GPay, Paytm, BHIM, Amazon Pay, & Net Banking. Instant payment confirmation on WhatsApp!
-              </p>
-            </div>
+          <div style={{ margin: '14px 0', fontSize: '1.4rem', fontWeight: 800, color: 'var(--text-dark)' }}>
+            {upiId}
           </div>
+
+          <div style={{ display: 'flex', gap: '10px', justifyContent: 'center', flexWrap: 'wrap', marginBottom: '16px' }}>
+            <button 
+              onClick={() => handleCopy(upiId, 'UPI ID')}
+              className="btn btn-gold-luxury btn-sm"
+            >
+              <i className="fas fa-copy"></i> Copy UPI ID
+            </button>
+            <a 
+              href={upiPayLink}
+              className="btn dark-whatsapp-btn btn-sm"
+              style={{ background: 'linear-gradient(135deg, #0284c7, #0369a1) !important' }}
+            >
+              <i className="fas fa-bolt"></i> Pay via Any UPI App
+            </a>
+          </div>
+
+          <p style={{ fontSize: '0.8rem', color: 'var(--text-muted-dark)', lineHeight: 1.5 }}>
+            <i className="fas fa-shield-alt" style={{ color: '#10b981', marginRight: '4px' }}></i>
+            Supports PhonePe, GPay, Paytm, BHIM, Amazon Pay, & Net Banking. Instant payment confirmation on WhatsApp!
+          </p>
         </div>
       </div>
     </section>

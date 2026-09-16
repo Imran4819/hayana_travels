@@ -1,76 +1,118 @@
 import React, { useState, useEffect } from 'react';
+import AddReviewModal from './AddReviewModal';
+
+const initialReviews = [
+  {
+    id: 1,
+    category: 'jupiter',
+    name: 'Rohan & Neha Patel',
+    location: 'Mumbai ➔ Daman Trip',
+    vehicle: 'TVS Jupiter Two-Wheeler (Only For Daman)',
+    rating: 5,
+    date: 'September 2026',
+    badge: 'VERIFIED DAMAN RENT',
+    avatar: 'RP',
+    avatarBg: '#d4af37',
+    text: 'Rented TVS Jupiter for 3 days in Daman to explore Devka and Jampore beaches. The scooter was delivered directly to our hotel within 20 minutes! Extremely smooth ride, top mileage, and two sanitized helmets were provided. Best two-wheeler service in Daman!'
+  },
+  {
+    id: 2,
+    category: 'ertiga',
+    name: 'Ankit Sharma & Family',
+    location: 'Surat ➔ All Over India Tour',
+    vehicle: 'Maruti Suzuki Ertiga (With Driver All Over India)',
+    rating: 5,
+    date: 'August 2026',
+    badge: 'VERIFIED INDIA TOUR',
+    avatar: 'AS',
+    avatarBg: '#b8860b',
+    text: 'We booked Maruti Suzuki Ertiga with driver for a 6-day family pilgrimage trip covering Surat, Diu, Gir, and Somnath. The 7-seater space was super comfortable for 6 adults + luggage bags. Driver Ramesh was polite, punctual, and safe across all state highways. Highly recommended!'
+  },
+  {
+    id: 3,
+    category: 'jupiter',
+    name: 'Meera & Dhruv Joshi',
+    location: 'Ahmedabad ➔ Daman Getaway',
+    vehicle: 'TVS Jupiter Two-Wheeler (Only For Daman)',
+    rating: 5,
+    date: 'August 2026',
+    badge: 'VERIFIED DAMAN RENT',
+    avatar: 'MJ',
+    avatarBg: '#10b981',
+    text: 'Exploring Daman beach promenade on TVS Jupiter was the best part of our weekend! Zero hassle paperwork—just showed DL and Aadhar. The weekend promo code DAMAN399 saved us extra money. Truly reliable service!'
+  },
+  {
+    id: 4,
+    category: 'ertiga',
+    name: 'Vikramaditya Singh',
+    location: 'Vapi ➔ Outstation India Tour',
+    vehicle: 'Maruti Suzuki Ertiga (With Driver All Over India)',
+    rating: 5,
+    date: 'July 2026',
+    badge: 'VERIFIED INDIA TOUR',
+    avatar: 'VS',
+    avatarBg: '#2563eb',
+    text: 'Hired Maruti Ertiga with professional driver for our outstation road trip. Clean interiors, cold AC, and valid All-India commercial permit made crossing state borders smooth and completely stress-free. Excellent service!'
+  }
+];
 
 export default function Testimonials({ onOpenBookingModal }) {
+  const [reviews, setReviews] = useState(initialReviews);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const [isReviewModalOpen, setIsReviewModalOpen] = useState(false);
 
-  const reviewsData = [
-    {
-      id: 1,
-      category: 'jupiter',
-      name: 'Rohan & Neha Patel',
-      location: 'Mumbai ➔ Daman Trip',
-      vehicle: 'TVS Jupiter Two-Wheeler (Only For Daman)',
-      rating: 5,
-      date: 'September 2026',
-      badge: 'VERIFIED DAMAN RENT',
-      avatar: 'RP',
-      avatarBg: '#d4af37',
-      text: 'Rented TVS Jupiter for 3 days in Daman to explore Devka and Jampore beaches. The scooter was delivered directly to our hotel within 20 minutes! Extremely smooth ride, top mileage, and two sanitized helmets were provided. Best two-wheeler service in Daman!'
-    },
-    {
-      id: 2,
-      category: 'ertiga',
-      name: 'Ankit Sharma & Family',
-      location: 'Surat ➔ All Over India Tour',
-      vehicle: 'Maruti Suzuki Ertiga (With Driver All Over India)',
-      rating: 5,
-      date: 'August 2026',
-      badge: 'VERIFIED INDIA TOUR',
-      avatar: 'AS',
-      avatarBg: '#b8860b',
-      text: 'We booked Maruti Suzuki Ertiga with driver for a 6-day family pilgrimage trip covering Surat, Diu, Gir, and Somnath. The 7-seater space was super comfortable for 6 adults + luggage bags. Driver Ramesh was polite, punctual, and safe across all state highways. Highly recommended!'
-    },
-    {
-      id: 3,
-      category: 'jupiter',
-      name: 'Meera & Dhruv Joshi',
-      location: 'Ahmedabad ➔ Daman Getaway',
-      vehicle: 'TVS Jupiter Two-Wheeler (Only For Daman)',
-      rating: 5,
-      date: 'August 2026',
-      badge: 'VERIFIED DAMAN RENT',
-      avatar: 'MJ',
-      avatarBg: '#10b981',
-      text: 'Exploring Daman beach promenade on TVS Jupiter was the best part of our weekend! Zero hassle paperwork—just showed DL and Aadhar. The weekend promo code DAMAN399 saved us extra money. Truly reliable service!'
-    },
-    {
-      id: 4,
-      category: 'ertiga',
-      name: 'Vikramaditya Singh',
-      location: 'Vapi ➔ Outstation India Tour',
-      vehicle: 'Maruti Suzuki Ertiga (With Driver All Over India)',
-      rating: 5,
-      date: 'July 2026',
-      badge: 'VERIFIED INDIA TOUR',
-      avatar: 'VS',
-      avatarBg: '#2563eb',
-      text: 'Hired Maruti Ertiga with professional driver for our outstation road trip. Clean interiors, cold AC, and valid All-India commercial permit made crossing state borders smooth and completely stress-free. Excellent service!'
+  // Fetch ratings from backend API on mount
+  useEffect(() => {
+    async function fetchRatings() {
+      try {
+        const res = await fetch('https://business-management-ji66.onrender.com/ratings');
+        if (res.ok) {
+          const data = await res.json();
+          const items = Array.isArray(data) ? data : (data.data || data.ratings || []);
+          if (items && items.length > 0) {
+            const mappedApiReviews = items.map((item, idx) => ({
+              id: item.id || `api-${idx}`,
+              name: item.name || 'Verified Customer',
+              location: item.location || 'Daman Trip',
+              vehicle: item.vehicle || 'Vehicle Rental',
+              rating: Number(item.rating) || 5,
+              date: item.date || item.created_at || 'Verified Review',
+              badge: item.badge || 'VERIFIED CUSTOMER',
+              avatar: item.avatar || (item.name ? item.name.substring(0, 2).toUpperCase() : 'VC'),
+              avatarBg: item.avatar_bg || item.avatarBg || '#d97706',
+              text: item.text || item.comment || ''
+            }));
+            
+            // Combine API reviews ahead of hardcoded base reviews
+            setReviews([...mappedApiReviews, ...initialReviews]);
+          }
+        }
+      } catch (err) {
+        console.warn('Unable to load live ratings from API, using fallback reviews:', err);
+      }
     }
-  ];
+
+    fetchRatings();
+  }, []);
 
   // Auto-scroll carousel every 3.5 seconds (pauses on hover)
   useEffect(() => {
     if (isPaused) return;
 
     const timer = setInterval(() => {
-      setCurrentIndex(prev => (prev + 1) % reviewsData.length);
+      setCurrentIndex(prev => (prev + 1) % reviews.length);
     }, 3500);
 
     return () => clearInterval(timer);
-  }, [isPaused, reviewsData.length]);
+  }, [isPaused, reviews.length]);
 
-  const currentReview = reviewsData[currentIndex] || reviewsData[0];
+  const handleAddReview = (newReview) => {
+    setReviews(prev => [newReview, ...prev]);
+    setCurrentIndex(0);
+  };
+
+  const currentReview = reviews[currentIndex] || reviews[0];
 
   return (
     <section className="section light-luxury-section" id="reviews">
@@ -115,7 +157,7 @@ export default function Testimonials({ onOpenBookingModal }) {
               <div className="testimonial-user-info">
                 <div 
                   className="review-avatar-circle"
-                  style={{ background: currentReview.avatarBg }}
+                  style={{ background: currentReview.avatarBg || '#d97706' }}
                 >
                   {currentReview.avatar}
                 </div>
@@ -154,7 +196,7 @@ export default function Testimonials({ onOpenBookingModal }) {
 
         {/* CAROUSEL DOT INDICATORS */}
         <div className="carousel-dots" style={{ marginTop: '24px' }}>
-          {reviewsData.map((_, idx) => (
+          {reviews.map((_, idx) => (
             <button 
               key={idx} 
               className={`dot ${currentIndex === idx ? 'active' : ''}`} 
@@ -165,14 +207,26 @@ export default function Testimonials({ onOpenBookingModal }) {
         </div>
 
         {/* SHARE EXPERIENCE CALL-TO-ACTION */}
-        <div style={{ textAlign: 'center', marginTop: '36px' }}>
+        <div style={{ display: 'flex', gap: '14px', justifyContent: 'center', flexWrap: 'wrap', marginTop: '36px' }}>
+          <button 
+            className="btn btn-gold-luxury btn-lg"
+            onClick={() => setIsReviewModalOpen(true)}
+          >
+            <i className="fas fa-star"></i> Write a Review & Rate Us
+          </button>
           <button 
             className="btn dark-whatsapp-btn btn-lg"
             onClick={() => onOpenBookingModal('Customer Review Submission', '')}
           >
-            <i className="fab fa-whatsapp"></i> Rented with us? Share Your Feedback on WhatsApp
+            <i className="fab fa-whatsapp"></i> Feedback on WhatsApp
           </button>
         </div>
+
+        <AddReviewModal 
+          isOpen={isReviewModalOpen}
+          onClose={() => setIsReviewModalOpen(false)}
+          onAddReview={handleAddReview}
+        />
 
       </div>
     </section>

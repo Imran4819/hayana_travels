@@ -10,34 +10,34 @@ export default function Hero({ onOpenBookingModal }) {
           </div>
           
           <h1 className="hero-serif-title">
-            Your journey.<br />
-            <span className="serif-gold-text">Our wheels.</span>
+            #1 Bike Rental & Car Rental in Daman.<br />
+            <span className="serif-gold-text">Hayana Travels</span>
           </h1>
 
           <p className="hero-serif-subtitle">
-            Trusted bike rentals in <strong>Daman & Diu</strong> from ₹400/day. Swift Dzire Sedan & Maruti Ertiga 7-Seater car rentals <strong>Daman Local & All India Drops</strong>.
+            Best Bike Rental in <strong>Daman</strong> from ₹400/day. Swift Dzire Sedan & Maruti Ertiga 7-Seater Car Rental in <strong>Daman Local & All-India Drops</strong>. Free Devka hotel doorstep delivery!
           </p>
 
-          <div className="hero-bullets-grid">
+          <div className="hero-bullets-grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))' }}>
             <div className="bullet-luxury-item">
               <i className="fas fa-motorcycle gold-bullet-icon"></i>
               <div>
-                <strong>TVS Jupiter (Scooter)</strong>
-                <p>₹400/Day • Daman Only • Free Delivery</p>
+                <strong>TVS Jupiter Scooter</strong>
+                <p>₹400/Day • Daman Only</p>
               </div>
             </div>
             <div className="bullet-luxury-item">
               <i className="fas fa-car gold-bullet-icon"></i>
               <div>
-                <strong>Swift Dzire (Sedan)</strong>
-                <p>Local ₹2,200 • Outstation ₹13/km (Min 300km/day)</p>
+                <strong>Swift Dzire Sedan</strong>
+                <p>Local ₹2,200 • ₹13/km (Min 300km)</p>
               </div>
             </div>
-            <div className="bullet-luxury-item" style={{ gridColumn: 'span 2' }}>
-              <i className="fas fa-user-tie gold-bullet-icon"></i>
+            <div className="bullet-luxury-item">
+              <i className="fas fa-shuttle-van gold-bullet-icon"></i>
               <div>
-                <strong>Maruti Ertiga VXI (7-Seater)</strong>
-                <p>Local ₹3,000 • Outstation ₹15/km (Min 300km/day + Toll/Parking)</p>
+                <strong>Maruti Ertiga 7-Seater</strong>
+                <p>Local ₹3,000 • ₹15/km (Min 300km)</p>
               </div>
             </div>
           </div>

@@ -9,9 +9,9 @@ export default function FleetCatalog({ onOpenBookingModal, onSelectVehicleForCal
           <div className="hero-gold-tag" style={{ justifyContent: 'center' }}>
             <span className="gold-line"></span> OUR OFFICIAL FLEET & RATE CARD
           </div>
-          <h2 className="section-title-serif">Verified Fleet & Fixed Route Rates</h2>
+          <h2 className="section-title-serif">Bike Rental & Car Rental Rates in Daman</h2>
           <p className="section-desc-serif" style={{ margin: '0 auto' }}>
-            Book TVS Jupiter Scooter (Daman Only), Swift Dzire Sedan, or Maruti Ertiga VXI 7-Seater Car with professional driver.
+            Official rates for TVS Jupiter Bike in Daman (scooter), Swift Dzire Sedan, and Maruti Ertiga 7-Seater Car in Daman.
           </p>
         </div>
 
