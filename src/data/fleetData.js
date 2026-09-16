@@ -170,35 +170,4 @@ export const fleetData = [
   }
 ];
 
-export const specialOffers = [
-  {
-    id: 'offer-welcome500',
-    tag: 'REWARD COUPON • FLAT ₹500 OFF',
-    title: 'Customer Welcome Reward',
-    subtitle: 'Get Flat ₹500 OFF on your sedan or Ertiga outstation rental bookings with Hayana Travels!',
-    badge: 'FLAT ₹500 OFF',
-    code: 'WELCOME500',
-    vehicleId: 'swift-dzire',
-    rate: 'Flat ₹500 OFF'
-  },
-  {
-    id: 'offer-daman10',
-    tag: 'REWARD COUPON • 10% DISCOUNT',
-    title: 'Daman 10% Special Savings',
-    subtitle: 'Enjoy 10% OFF on all Self Drive & Outstation vehicle rental bookings in Daman!',
-    badge: '10% DISCOUNT',
-    code: 'DAMAN10',
-    vehicleId: 'swift-dzire',
-    rate: '10% OFF'
-  },
-  {
-    id: 'offer-helmetfree',
-    tag: 'REWARD COUPON • FREE HELMET & ₹100 OFF',
-    title: 'Scooter Rider Special Deal',
-    subtitle: 'Rent TVS Jupiter in Daman and get 2 free sanitized helmets + ₹100 instant discount!',
-    badge: 'FREE HELMET & ₹100 OFF',
-    code: 'HELMETFREE',
-    vehicleId: 'tvs-jupiter',
-    rate: '₹100 OFF + Free Helmet'
-  }
-];
+export const specialOffers = [];
