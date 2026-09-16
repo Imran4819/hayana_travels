@@ -31,8 +31,10 @@ export const fleetData = [
     type: '5 Passenger Premium AC Sedan Car',
     location: 'DAMAN LOCAL & ALL INDIA DROPS (With Driver)',
     rateDay: 2200,
+    ratePerKm: 13,
+    minKmPerDay: 300,
     rateUnit: 'for 8H Daman Local (All Incl.)',
-    image: '/assets/images/ertiga_car.png',
+    image: '/assets/images/swift_dzire_real.png',
     seats: '5 Passengers (4 + Driver)',
     fuel: 'Petrol / CNG',
     transmission: 'With Professional Driver',
@@ -41,15 +43,16 @@ export const fleetData = [
     badgeClass: 'badge-india',
     ratesList: [
       { route: 'Daman Local (8 Hours All Incl.)', price: '₹2,200' },
-      { route: 'Daman ➔ Vapi Station Drop', price: '₹700' },
-      { route: 'Daman ➔ Surat Drop', price: '₹3,500' },
-      { route: 'Daman ➔ Mumbai Airport Drop', price: '₹5,000' }
+      { route: 'Outstation All India Tours', price: '₹13 / km' },
+      { route: 'Min. Daily Outstation Run', price: '300 km / day' },
+      { route: 'Toll Tax & Parking', price: 'Extra (As Actual)' },
+      { route: 'Daman ➔ Vapi Station Drop', price: '₹700' }
     ],
     features: [
       'Daman Local 8 Hours: ₹2,200 (All Included)',
-      'Daman to Vapi Drop: ₹700',
-      'Daman to Surat Drop: ₹3,500',
-      'Daman to Mumbai Airport Drop: ₹5,000',
+      'Outstation All India Tours: ₹13/km (Min 300 km/day)',
+      'Toll Tax & Parking extra as per actuals',
+      'Daman to Vapi Drop ₹700 | Surat Drop ₹3,500 | Mumbai Airport ₹5,000',
       'Driven by Polite Professional Driver'
     ]
   },
@@ -60,6 +63,8 @@ export const fleetData = [
     type: '7 Passenger Premium MPV Car',
     location: 'DAMAN LOCAL & ALL OVER INDIA (With Driver)',
     rateDay: 3000,
+    ratePerKm: 15,
+    minKmPerDay: 300,
     rateUnit: 'for 8H Daman Local (All Incl.)',
     image: '/assets/images/ertiga_real.png',
     seats: '7 Passengers (6 + Driver)',
@@ -70,13 +75,15 @@ export const fleetData = [
     badgeClass: 'badge-india',
     ratesList: [
       { route: 'Daman Local (8 Hours All Incl.)', price: '₹3,000' },
-      { route: 'Outstation Tours All Over India', price: 'From ₹12 / km' }
+      { route: 'Outstation All India Tours', price: '₹15 / km' },
+      { route: 'Min. Daily Outstation Run', price: '300 km / day' },
+      { route: 'Toll Tax & Parking', price: 'Extra (As Actual)' }
     ],
     features: [
       'Daman Local 8 Hours: ₹3,000 (All Included)',
-      'Outstation All India Tours from ₹12/km',
-      'Spacious 7-Seater AC Family Comfort',
-      'Experienced Driver for Outstation & Airport Trips'
+      'Outstation All India Tours: ₹15/km (Min 300 km/day)',
+      'Toll Tax & Parking extra as per actuals',
+      'Spacious 7-Seater AC Family Comfort with Driver'
     ]
   }
 ];
@@ -85,22 +92,22 @@ export const specialOffers = [
   {
     id: 'offer-swift-dzire',
     tag: 'DAMAN & OUTSTATION DROPS',
-    title: 'Swift Dzire Local & Outstation Drop',
-    subtitle: 'Daman Local 8 Hours at ₹2,200 (All Included) or Daman to Vapi Station Drop for ₹700!',
+    title: 'Swift Dzire Local & Outstation Deal',
+    subtitle: 'Daman Local 8 Hours at ₹2,200 (All Incl.) or Outstation at ₹13/km (Min 300 km/day + Toll & Parking extra)!',
     badge: 'BEST SEDAN VALUE',
-    code: 'DZIRE700',
+    code: 'DZIRE13KM',
     vehicleId: 'swift-dzire',
-    rate: '₹2,200 / 8H'
+    rate: '₹13 / km'
   },
   {
     id: 'offer-ertiga-local',
     tag: 'DAMAN 8H & ALL INDIA TOURS',
     title: 'Maruti Ertiga VXI 7-Seater Deal',
-    subtitle: 'Daman Local 8 Hours at ₹3,000 (All Included) or Outstation All India Tours from ₹12/km with professional driver.',
+    subtitle: 'Daman Local 8 Hours at ₹3,000 (All Incl.) or Outstation at ₹15/km (Min 300 km/day + Toll & Parking extra)!',
     badge: '7-SEATER SPECIAL',
-    code: 'ERTIGA3000',
+    code: 'ERTIGA15KM',
     vehicleId: 'ertiga-vxi',
-    rate: '₹3,000 / 8H'
+    rate: '₹15 / km'
   },
   {
     id: 'offer-jupiter-weekend',

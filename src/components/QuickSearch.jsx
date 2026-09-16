@@ -10,6 +10,42 @@ const getTodayDateString = () => {
 
 export default function QuickSearch({ onOpenBookingModal }) {
   const [tab, setTab] = useState('bikes');
+  const [vehicle, setVehicle] = useState('jupiter');
+
+  const handleTabChange = (newTab) => {
+    setTab(newTab);
+    if (newTab === 'bikes') {
+      setVehicle('jupiter');
+    } else if (newTab === 'dzire') {
+      setVehicle('dzire');
+    } else if (newTab === 'cars') {
+      setVehicle('ertiga');
+    } else if (newTab === 'tours') {
+      setVehicle('ertiga');
+    }
+  };
+
+  const handleVehicleChange = (e) => {
+    const selectedVal = e.target.value;
+    setVehicle(selectedVal);
+    if (selectedVal === 'jupiter') {
+      setTab('bikes');
+    } else if (selectedVal === 'dzire') {
+      setTab('dzire');
+    } else if (selectedVal === 'ertiga') {
+      setTab('cars');
+    }
+  };
+
+  const handleSearchSubmit = () => {
+    const vehicleLabels = {
+      dzire: 'Maruti Swift Dzire (Sedan)',
+      ertiga: 'Maruti Suzuki Ertiga VXI (7-Seater)',
+      jupiter: 'TVS Jupiter (Two Wheeler)'
+    };
+    const selectedName = vehicleLabels[vehicle] || 'Quick Search Reservation';
+    onOpenBookingModal(selectedName, '');
+  };
 
   return (
     <div className="container">
@@ -17,19 +53,25 @@ export default function QuickSearch({ onOpenBookingModal }) {
         <div className="search-tabs">
           <button 
             className={`tab-btn ${tab === 'bikes' ? 'active' : ''}`}
-            onClick={() => setTab('bikes')}
+            onClick={() => handleTabChange('bikes')}
           >
             <i className="fas fa-motorcycle"></i> Two Wheeler (Daman Only)
           </button>
           <button 
+            className={`tab-btn ${tab === 'dzire' ? 'active' : ''}`}
+            onClick={() => handleTabChange('dzire')}
+          >
+            <i className="fas fa-car-side"></i> Swift Dzire (Daman & Drops)
+          </button>
+          <button 
             className={`tab-btn ${tab === 'cars' ? 'active' : ''}`}
-            onClick={() => setTab('cars')}
+            onClick={() => handleTabChange('cars')}
           >
             <i className="fas fa-car"></i> Ertiga Car (All Over India)
           </button>
           <button 
             className={`tab-btn ${tab === 'tours' ? 'active' : ''}`}
-            onClick={() => setTab('tours')}
+            onClick={() => handleTabChange('tours')}
           >
             <i className="fas fa-map-marked-alt"></i> Tour Packages
           </button>
@@ -48,9 +90,10 @@ export default function QuickSearch({ onOpenBookingModal }) {
 
           <div className="input-group">
             <label><i className="fas fa-layer-group"></i> Vehicle Required</label>
-            <select defaultValue="jupiter">
+            <select value={vehicle} onChange={handleVehicleChange}>
+              <option value="dzire">Maruti Swift Dzire (Sedan - Daman & Drops)</option>
+              <option value="ertiga">Maruti Suzuki Ertiga VXI (7-Seater - All India)</option>
               <option value="jupiter">TVS Jupiter (Two Wheeler - Daman Only)</option>
-              <option value="ertiga">Maruti Suzuki Ertiga (7-Seater Car - All India)</option>
             </select>
           </div>
 
@@ -78,7 +121,7 @@ export default function QuickSearch({ onOpenBookingModal }) {
           <div className="input-group search-btn-group">
             <button 
               className="btn btn-primary search-submit-btn"
-              onClick={() => onOpenBookingModal('Quick Search Reservation', '')}
+              onClick={handleSearchSubmit}
             >
               <i className="fas fa-search"></i> Check Availability
             </button>
@@ -88,3 +131,4 @@ export default function QuickSearch({ onOpenBookingModal }) {
     </div>
   );
 }
+

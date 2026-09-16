@@ -12,23 +12,23 @@ export default function Navbar({ onOpenBookingModal }) {
       {/* Top Announcement Ticker Line */}
       <div className="top-ticker-bar">
         <div className="ticker-track">
-          <span>Maruti Ertiga Car Hire All Over India from ₹12/km</span>
+          <span>Maruti Ertiga 7-Seater: ₹15/km (Min 300km/day + Toll & Parking)</span>
           <span className="ticker-dot">•</span>
-          <span>Helmet + Full Tank Included with Every Bike</span>
+          <span>Swift Dzire Sedan: ₹13/km (Min 300km/day + Toll & Parking)</span>
+          <span className="ticker-dot">•</span>
+          <span>Helmet Included with Every Bike in Daman</span>
           <span className="ticker-dot">•</span>
           <span>Booking Confirmed in 30 Minutes</span>
-          <span className="ticker-dot">•</span>
-          <span>500+ Happy Customers</span>
           <span className="ticker-dot">•</span>
           <span>Santosh Abhale (+91 93098 20905)</span>
           <span className="ticker-dot">•</span>
-          <span>Maruti Ertiga Car Hire All Over India from ₹12/km</span>
+          <span>Maruti Ertiga 7-Seater: ₹15/km (Min 300km/day + Toll & Parking)</span>
           <span className="ticker-dot">•</span>
-          <span>Helmet + Full Tank Included with Every Bike</span>
+          <span>Swift Dzire Sedan: ₹13/km (Min 300km/day + Toll & Parking)</span>
+          <span className="ticker-dot">•</span>
+          <span>Helmet Included with Every Bike in Daman</span>
           <span className="ticker-dot">•</span>
           <span>Booking Confirmed in 30 Minutes</span>
-          <span className="ticker-dot">•</span>
-          <span>500+ Happy Customers</span>
           <span className="ticker-dot">•</span>
           <span>Santosh Abhale (+91 93098 20905)</span>
           <span className="ticker-dot">•</span>
@@ -53,8 +53,8 @@ export default function Navbar({ onOpenBookingModal }) {
             <li><a href="#hero" className="nav-link active">Home</a></li>
             <li><a href="#fleet" className="nav-link">Bikes</a></li>
             <li><a href="#fleet" className="nav-link">Cars</a></li>
-            <li><a href="#specialties" className="nav-link">About</a></li>
             <li><a href="#calculator" className="nav-link">Fare Calculator</a></li>
+            <li><a href="#payment-methods" className="nav-link">Payments</a></li>
             <li><a href="#reviews" className="nav-link">Reviews</a></li>
           </ul>
 

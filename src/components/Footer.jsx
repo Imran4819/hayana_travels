@@ -121,6 +121,28 @@ export default function Footer({ onOpenBookingModal }) {
           </div>
         </div>
 
+        {/* ACCEPTED PAYMENT MODES BANNER */}
+        <div style={{
+          borderTop: '1px solid rgba(255, 255, 255, 0.1)',
+          paddingTop: '20px',
+          marginBottom: '20px',
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          flexWrap: 'wrap',
+          gap: '14px',
+          fontSize: '0.85rem',
+          color: '#a8a29e'
+        }}>
+          <div>
+            <strong style={{ color: '#ffffff', marginRight: '10px' }}><i className="fas fa-lock" style={{ color: 'var(--gold-primary)' }}></i> Accepted Payment Modes:</strong>
+            <span>PhonePe • GPay • Paytm • UPI • Bank Transfer (IMPS/NEFT) • Cards • Cash</span>
+          </div>
+          <a href="#payment-methods" style={{ color: 'var(--gold-primary)', textDecoration: 'none', fontWeight: 700, fontSize: '0.82rem' }}>
+            View Bank Details & UPI <i className="fas fa-arrow-right"></i>
+          </a>
+        </div>
+
         <div className="footer-bottom">
           <p>© 2026 Hanaya Tour & Travels. Owned & Managed by Santosh Abhale. Near Miramar Hotel, Devka, Daman. Call / WhatsApp: +91 93098 20905.</p>
         </div>

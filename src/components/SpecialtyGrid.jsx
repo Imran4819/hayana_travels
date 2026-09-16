@@ -6,37 +6,62 @@ export default function SpecialtyGrid({ onOpenBookingModal, onSelectVehicleForCa
       <div className="container">
         <div className="section-header text-left-header">
           <div className="hero-gold-tag" style={{ justifyContent: 'center' }}>
-            <span className="gold-line"></span> DAMAN & DIU ONLY
+            <span className="gold-line"></span> DAMAN & ALL OVER INDIA
           </div>
-          <h2 className="section-title-serif">Rent a Bike</h2>
+          <h2 className="section-title-serif">Featured Vehicle Rentals</h2>
           <p className="section-desc-serif">
-            Explore every beach lane, fort road, and coastal highway of Daman & Diu on two wheels. All bikes include a helmet and full tank.
+            Rent TVS Jupiter Scooters in Daman, Swift Dzire Sedans for Local & Outstation drops, or Maruti Ertiga VXI 7-Seater MPVs for All-India tours.
           </p>
         </div>
 
         <div className="specialty-grid">
           {/* TVS Jupiter Specialty Card */}
           <div className="specialty-card-luxury">
-            <div className="card-badge-gold">MOST POPULAR</div>
+            <div className="card-badge-gold">DAMAN SCOOTER</div>
             <img src="/assets/images/jupiter_real.png" className="specialty-img-luxury" alt="TVS Jupiter Scooter Daman" />
             <div className="specialty-content-luxury">
               <span className="specialty-badge-tag">TWO WHEELER • DAMAN ONLY</span>
               <h3 className="card-title-serif">TVS Jupiter (Scooter)</h3>
-              <p className="card-desc">
-                Comfortable 110cc automatic scooter available <strong>ONLY FOR DAMAN RENTALS</strong>. Free doorstep delivery to Miramar, Devka, or any hotel in Daman.
+              <p className="card-desc" style={{ color: 'var(--blue-dark)', fontWeight: 700 }}>
+                ₹400 / Day • Unlimited KM in Daman
               </p>
               <ul className="luxury-features-list">
                 <li><i className="fas fa-check gold-check"></i> 2 Clean Sanitized Helmets Included</li>
                 <li><i className="fas fa-check gold-check"></i> Free Hotel & Resort Delivery in Daman</li>
-                <li><i className="fas fa-check gold-check"></i> Unlimited Kilometers</li>
-                <li><i className="fas fa-shield-alt gold-check"></i> Valid DL & Aadhar Verification</li>
+                <li><i className="fas fa-check gold-check"></i> Quick 2-Min Paperwork (DL & Aadhar)</li>
               </ul>
               <div style={{ display: 'flex', gap: '12px', marginTop: 'auto' }}>
                 <button className="btn btn-gold-luxury btn-sm" onClick={() => onSelectVehicleForCalc('tvs-jupiter')}>
-                  <i className="fas fa-calculator"></i> Rate Estimator
+                  <i className="fas fa-calculator"></i> Estimator
                 </button>
-                <button className="btn dark-whatsapp-btn btn-sm" onClick={() => onOpenBookingModal('TVS Jupiter Daman (Scooter)', '₹450/day')}>
-                  <i className="fab fa-whatsapp"></i> Reserve Scooter
+                <button className="btn dark-whatsapp-btn btn-sm" onClick={() => onOpenBookingModal('TVS Jupiter Daman (Scooter)', '₹400/day')}>
+                  <i className="fab fa-whatsapp"></i> Reserve
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* Swift Dzire Specialty Card */}
+          <div className="specialty-card-luxury">
+            <div className="card-badge-gold">SEDAN DROPS</div>
+            <img src="/assets/images/swift_dzire_real.png" className="specialty-img-luxury" alt="Swift Dzire Sedan Car" />
+            <div className="specialty-content-luxury">
+              <span className="specialty-badge-tag gold-badge">SEDAN • WITH DRIVER</span>
+              <h3 className="card-title-serif">Swift Dzire (Sedan)</h3>
+              <p className="card-desc" style={{ color: 'var(--blue-dark)', fontWeight: 700 }}>
+                8H Local ₹2,200 • Outstation ₹13 / km
+              </p>
+              <ul className="luxury-features-list">
+                <li><i className="fas fa-check gold-check"></i> Outstation Rate: <strong>₹13 / km</strong> (Min 300 km/day)</li>
+                <li><i className="fas fa-receipt gold-check"></i> <strong>Toll Tax & Parking extra</strong> as per actuals</li>
+                <li><i className="fas fa-check gold-check"></i> Local 8H: ₹2,200 | Vapi Station Drop: <strong>₹700</strong></li>
+              </ul>
+              <div style={{ display: 'flex', gap: '12px', marginTop: 'auto' }}>
+                <button className="btn btn-gold-luxury btn-sm" onClick={() => onSelectVehicleForCalc('swift-dzire')}>
+                  <i className="fas fa-calculator"></i> Estimator
+                </button>
+                <button className="btn dark-whatsapp-btn btn-sm" onClick={() => onOpenBookingModal('Swift Dzire (Sedan)', '₹13/km')}>
+                  <i className="fab fa-whatsapp"></i> Reserve
                 </button>
               </div>
             </div>
@@ -44,26 +69,25 @@ export default function SpecialtyGrid({ onOpenBookingModal, onSelectVehicleForCa
 
           {/* Ertiga Specialty Card */}
           <div className="specialty-card-luxury">
-            <div className="card-badge-gold">FAMILY FRIENDLY</div>
+            <div className="card-badge-gold">7-SEATER MPV</div>
             <img src="/assets/images/ertiga_real.png" className="specialty-img-luxury" alt="Maruti Suzuki Ertiga Car All Over India" />
             <div className="specialty-content-luxury">
-              <span className="specialty-badge-tag gold-badge">7-SEATER CAR • ALL OVER INDIA</span>
-              <h3 className="card-title-serif">Maruti Suzuki Ertiga</h3>
-              <p className="card-desc">
-                Spacious 7-seater MPV car available for outstation tours & pilgrimages <strong>ALL OVER INDIA</strong>. Driven by professional uniform drivers.
+              <span className="specialty-badge-tag gold-badge">7-SEATER • ALL OVER INDIA</span>
+              <h3 className="card-title-serif">Maruti Ertiga VXI</h3>
+              <p className="card-desc" style={{ color: 'var(--blue-dark)', fontWeight: 700 }}>
+                8H Local ₹3,000 • Outstation ₹15 / km
               </p>
               <ul className="luxury-features-list">
-                <li><i className="fas fa-user-tie gold-check"></i> <strong>With Professional Driver Only</strong></li>
-                <li><i className="fas fa-check gold-check"></i> All India Tourist Permit</li>
-                <li><i className="fas fa-check gold-check"></i> Clean AC 7-Seater Cabin</li>
-                <li><i className="fas fa-check gold-check"></i> Flexible Daily & Km Outstation Packages</li>
+                <li><i className="fas fa-check gold-check"></i> Outstation Rate: <strong>₹15 / km</strong> (Min 300 km/day)</li>
+                <li><i className="fas fa-receipt gold-check"></i> <strong>Toll Tax & Parking extra</strong> as per actuals</li>
+                <li><i className="fas fa-user-tie gold-check"></i> 7-Seater AC Comfort with Driver</li>
               </ul>
               <div style={{ display: 'flex', gap: '12px', marginTop: 'auto' }}>
-                <button className="btn btn-gold-luxury btn-sm" onClick={() => onSelectVehicleForCalc('maruti-ertiga')}>
-                  <i className="fas fa-calculator"></i> Rate Estimator
+                <button className="btn btn-gold-luxury btn-sm" onClick={() => onSelectVehicleForCalc('ertiga-vxi')}>
+                  <i className="fas fa-calculator"></i> Estimator
                 </button>
-                <button className="btn dark-whatsapp-btn btn-sm" onClick={() => onOpenBookingModal('Maruti Ertiga (All Over India Car)', '₹12/km')}>
-                  <i className="fab fa-whatsapp"></i> Reserve Ertiga
+                <button className="btn dark-whatsapp-btn btn-sm" onClick={() => onOpenBookingModal('Maruti Ertiga VXI (7-Seater)', '₹15/km')}>
+                  <i className="fab fa-whatsapp"></i> Reserve
                 </button>
               </div>
             </div>
@@ -73,3 +97,4 @@ export default function SpecialtyGrid({ onOpenBookingModal, onSelectVehicleForCa
     </section>
   );
 }
+

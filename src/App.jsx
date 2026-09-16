@@ -7,6 +7,7 @@ import SpecialtyGrid from './components/SpecialtyGrid';
 import OffersSection from './components/OffersSection';
 import FleetCatalog from './components/FleetCatalog';
 import FareCalculator from './components/FareCalculator';
+import PaymentMethods from './components/PaymentMethods';
 import TourPackages from './components/TourPackages';
 import WhyChooseUs from './components/WhyChooseUs';
 import Testimonials from './components/Testimonials';
@@ -61,6 +62,7 @@ export default function App() {
         selectedVehicleId={selectedCalcVehicle}
         onOpenBookingModal={handleOpenModal}
       />
+      <PaymentMethods />
       <TourPackages onOpenBookingModal={handleOpenModal} />
       <WhyChooseUs />
       <Testimonials onOpenBookingModal={handleOpenModal} />

@@ -9,8 +9,8 @@ export default function FaqSection() {
       a: 'You need a valid original Driving License (DL) and a government photo ID (Aadhar Card, Passport, or Voter ID). We verify your documents in 2 minutes and hand over the keys.'
     },
     {
-      q: 'Is the Maruti Suzuki Ertiga available for All-India outstation trips?',
-      a: 'Yes! Our 7-seater Maruti Suzuki Ertiga cars come with commercial tourist permits valid for all states across India. You can hire it for self-drive or with a professional driver for inter-state family tours, wedding events, and airport pickups.'
+      q: 'What are the outstation rates for Maruti Ertiga and Swift Dzire?',
+      a: 'Our outstation charges are: Maruti Ertiga 7-Seater @ ₹15/km, and Swift Dzire Sedan @ ₹13/km. Both cars require a minimum running limit of 300 km / day. Toll tax and parking charges are extra as per actual receipts. Drivers are polite and experienced for All-India interstate travel.'
     },
     {
       q: 'Are helmets provided with bike rentals in Daman & Diu?',

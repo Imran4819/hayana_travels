@@ -15,7 +15,7 @@ export default function Hero({ onOpenBookingModal }) {
           </h1>
 
           <p className="hero-serif-subtitle">
-            Trusted bike rentals in <strong>Daman & Diu</strong> from ₹400/day. Maruti Ertiga car hire <strong>all over India</strong> from ₹12/km.
+            Trusted bike rentals in <strong>Daman & Diu</strong> from ₹400/day. Swift Dzire Sedan & Maruti Ertiga 7-Seater car rentals <strong>Daman Local & All India Drops</strong>.
           </p>
 
           <div className="hero-bullets-grid">
@@ -23,30 +23,43 @@ export default function Hero({ onOpenBookingModal }) {
               <i className="fas fa-motorcycle gold-bullet-icon"></i>
               <div>
                 <strong>TVS Jupiter (Scooter)</strong>
-                <p>Available ONLY FOR DAMAN • Free Doorstep Delivery</p>
+                <p>₹400/Day • Daman Only • Free Delivery</p>
               </div>
             </div>
             <div className="bullet-luxury-item">
+              <i className="fas fa-car gold-bullet-icon"></i>
+              <div>
+                <strong>Swift Dzire (Sedan)</strong>
+                <p>Local ₹2,200 • Outstation ₹13/km (Min 300km/day)</p>
+              </div>
+            </div>
+            <div className="bullet-luxury-item" style={{ gridColumn: 'span 2' }}>
               <i className="fas fa-user-tie gold-bullet-icon"></i>
               <div>
-                <strong>Maruti Ertiga (7-Seater)</strong>
-                <p>With Professional Driver Only • All Over India</p>
+                <strong>Maruti Ertiga VXI (7-Seater)</strong>
+                <p>Local ₹3,000 • Outstation ₹15/km (Min 300km/day + Toll/Parking)</p>
               </div>
             </div>
           </div>
 
-          <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', marginTop: '28px' }}>
+          <div style={{ display: 'flex', gap: '14px', flexWrap: 'wrap', marginTop: '24px' }}>
             <button 
-              className="btn btn-gold-luxury btn-lg"
-              onClick={() => onOpenBookingModal('TVS Jupiter (Daman Only)', '₹400/day')}
+              className="btn btn-gold-luxury btn-sm"
+              onClick={() => onOpenBookingModal('Swift Dzire (Sedan)', '₹2,200/8H')}
             >
-              <i className="fas fa-motorcycle"></i> Rent TVS Jupiter
+              <i className="fas fa-car"></i> Swift Dzire (₹2,200)
             </button>
             <button 
-              className="btn btn-dark-luxury btn-lg"
-              onClick={() => onOpenBookingModal('Maruti Ertiga (With Driver)', '₹12/km')}
+              className="btn btn-gold-luxury btn-sm"
+              onClick={() => onOpenBookingModal('Maruti Ertiga VXI (7-Seater)', '₹3,000/8H')}
             >
-              <i className="fas fa-car"></i> Rent Ertiga (With Driver)
+              <i className="fas fa-shuttle-van"></i> Ertiga VXI (₹3,000)
+            </button>
+            <button 
+              className="btn dark-whatsapp-btn btn-sm"
+              onClick={() => onOpenBookingModal('TVS Jupiter (Daman Only)', '₹400/day')}
+            >
+              <i className="fab fa-whatsapp"></i> TVS Jupiter (₹400)
             </button>
           </div>
         </div>
