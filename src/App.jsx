@@ -9,6 +9,7 @@ import OffersSection from './components/OffersSection';
 import FareCalculator from './components/FareCalculator';
 import PaymentMethods from './components/PaymentMethods';
 import TourPackages from './components/TourPackages';
+import TravelGallery from './components/TravelGallery';
 import Testimonials from './components/Testimonials';
 import BookingModal from './components/BookingModal';
 import LoginModal from './components/LoginModal';
@@ -91,6 +92,7 @@ export default function App() {
       />
       <PaymentMethods />
       <TourPackages onOpenBookingModal={handleOpenModal} />
+      <TravelGallery currentUser={currentUser} />
       <Testimonials onOpenBookingModal={handleOpenModal} />
       <Footer onOpenBookingModal={handleOpenModal} />
 

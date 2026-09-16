@@ -54,7 +54,7 @@ export default function Navbar({ onOpenBookingModal, onOpenLoginModal, currentUs
             <li><a href="#fleet" className="nav-link">Bikes &amp; Cars</a></li>
             <li><a href="#offers" className="nav-link">Coupons &amp; Offers</a></li>
             <li><a href="#calculator" className="nav-link">Fare Calculator</a></li>
-            <li><a href="#payment-methods" className="nav-link">Payments</a></li>
+            <li><a href="#gallery" className="nav-link">Gallery</a></li>
             <li><a href="#reviews" className="nav-link">Reviews</a></li>
           </ul>
 
@@ -153,6 +153,11 @@ export default function Navbar({ onOpenBookingModal, onOpenLoginModal, currentUs
             <li>
               <a href="#calculator" className="sidebar-link" onClick={handleLinkClick}>
                 <i className="fas fa-calculator"></i> Fare Calculator
+              </a>
+            </li>
+            <li>
+              <a href="#gallery" className="sidebar-link" onClick={handleLinkClick}>
+                <i className="fas fa-camera-retro"></i> Travel Gallery
               </a>
             </li>
             <li>

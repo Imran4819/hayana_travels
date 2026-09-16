@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import AddOfferModal from './AddOfferModal';
 
 export default function OffersSection({ onOpenBookingModal, onOpenLoginModal, currentUser }) {
@@ -6,35 +6,51 @@ export default function OffersSection({ onOpenBookingModal, onOpenLoginModal, cu
   const [loading, setLoading] = useState(true);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [copiedCode, setCopiedCode] = useState('');
+  const [fetchError, setFetchError] = useState(false);
 
-  // Fetch coupons purely from backend API
-  useEffect(() => {
-    const fetchOffers = async () => {
-      setLoading(true);
-      try {
-        const res = await fetch('https://business-management-ji66.onrender.com/offers');
-        if (res.ok) {
-          const data = await res.json();
-          const items = Array.isArray(data) ? data : (data.data || []);
-          const mapped = items.map((item, idx) => ({
-            id: item._id || item.id || `api-offer-${idx}`,
-            tag: `REWARD COUPON • ${item.badge || 'SPECIAL OFFER'}`,
-            title: item.offer_title || item.title || 'Special Coupon',
-            subtitle: item.offer_description || item.subtitle || 'Special discount coupon',
-            badge: item.badge || item.discount_value || 'DISCOUNT',
-            code: item.coupon_code || item.code || `COUPON${idx}`,
-            rate: item.discount_value || item.rate || 'Discount'
-          }));
-          setOffersList(mapped);
-        }
-      } catch (err) {
-        console.warn('Could not fetch offers from backend API:', err);
-      } finally {
+  // Fetch coupons from backend API with automatic retry for cold starts
+  const fetchOffers = useCallback(async (retryCount = 0) => {
+    setLoading(true);
+    setFetchError(false);
+
+    try {
+      const res = await fetch('https://business-management-ji66.onrender.com/offers');
+      if (res.ok) {
+        const resData = await res.json();
+        const items = Array.isArray(resData) 
+          ? resData 
+          : (Array.isArray(resData.data) ? resData.data : (resData.offers || []));
+
+        const mapped = items.map((item, idx) => ({
+          id: item.id || item._id || `api-offer-${idx}`,
+          tag: `REWARD COUPON • ${item.badge || 'SPECIAL OFFER'}`,
+          title: item.offer_title || item.title || 'Special Coupon',
+          subtitle: item.offer_description || item.subtitle || 'Special discount coupon',
+          badge: item.badge || item.discount_value || 'FLAT DISCOUNT',
+          code: item.coupon_code || item.code || `COUPON${idx}`,
+          rate: item.discount_value || item.rate || 'Discount'
+        }));
+
+        setOffersList(mapped);
+        setLoading(false);
+      } else {
+        throw new Error(`HTTP status ${res.status}`);
+      }
+    } catch (err) {
+      console.warn(`Fetch offers error (attempt ${retryCount + 1}):`, err);
+      if (retryCount < 2) {
+        // Auto retry after 2.5s if Render server was spinning up
+        setTimeout(() => fetchOffers(retryCount + 1), 2500);
+      } else {
+        setFetchError(true);
         setLoading(false);
       }
-    };
-    fetchOffers();
+    }
   }, []);
+
+  useEffect(() => {
+    fetchOffers(0);
+  }, [fetchOffers]);
 
   const handleCopyCode = (code) => {
     navigator.clipboard.writeText(code);
@@ -100,24 +116,51 @@ export default function OffersSection({ onOpenBookingModal, onOpenLoginModal, cu
             Copy coupon codes below and apply them during booking to get flat discounts &amp; free rewards on Hayana Travels.
           </p>
 
-          {/* ADD OFFER BUTTON - VISIBLE ONLY WHEN LOGGED IN */}
-          {currentUser && (
-            <div style={{ display: 'flex', justifyContent: 'center', gap: '12px', marginTop: '12px' }}>
+          <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: '12px', marginTop: '12px' }}>
+            <button 
+              type="button"
+              className="btn btn-sm"
+              onClick={() => fetchOffers(0)}
+              style={{
+                background: '#f1f5f9',
+                border: '1px solid #cbd5e1',
+                color: '#334155',
+                fontWeight: 700,
+                borderRadius: '10px',
+                padding: '8px 14px',
+                cursor: 'pointer'
+              }}
+            >
+              <i className={`fas fa-sync-alt ${loading ? 'fa-spin' : ''}`} style={{ marginRight: '6px' }}></i>
+              Refresh Coupons
+            </button>
+
+            {/* ADD OFFER BUTTON - VISIBLE ONLY WHEN LOGGED IN */}
+            {currentUser && (
               <button 
                 className="btn btn-gold-luxury btn-md"
                 onClick={() => setIsAddModalOpen(true)}
               >
                 <i className="fas fa-plus-circle"></i> Add New Offer &amp; Coupon Code
               </button>
-            </div>
-          )}
+            )}
+          </div>
         </div>
 
         {/* LOADING INDICATOR */}
         {loading ? (
           <div style={{ textAlign: 'center', padding: '40px', color: 'var(--gold-dark)', fontWeight: 700 }}>
-            <i className="fas fa-spinner fa-spin" style={{ fontSize: '2rem', marginBottom: '12px', display: 'block' }}></i>
-            Fetching live coupons from API...
+            <i className="fas fa-spinner fa-spin" style={{ fontSize: '2.2rem', marginBottom: '12px', display: 'block' }}></i>
+            Loading live coupon deals from API...
+          </div>
+        ) : fetchError ? (
+          <div style={{ textAlign: 'center', padding: '30px', background: '#fff', borderRadius: '16px', border: '1px solid #fee2e2', maxWidth: '480px', margin: '0 auto' }}>
+            <i className="fas fa-exclamation-triangle" style={{ fontSize: '2rem', color: '#ef4444', marginBottom: '10px', display: 'block' }}></i>
+            <h4 style={{ color: '#0f172a', margin: '0 0 8px' }}>Server Connection Timeout</h4>
+            <p style={{ fontSize: '0.88rem', color: '#64748b', marginBottom: '14px' }}>Backend API server is waking up. Please click refresh below.</p>
+            <button className="btn btn-gold-luxury btn-sm" onClick={() => fetchOffers(0)}>
+              <i className="fas fa-sync"></i> Try Again
+            </button>
           </div>
         ) : offersList.length === 0 ? (
           /* EMPTY STATE */
@@ -195,7 +238,7 @@ export default function OffersSection({ onOpenBookingModal, onOpenLoginModal, cu
                   {/* PROMO CODE DISPLAY & COPY BUTTON */}
                   <div style={{ 
                     display: 'flex', 
-                    justifyContent: 'space-between', 
+                    justify: 'space-between', 
                     alignItems: 'center', 
                     padding: '12px 16px', 
                     background: '#faf8f5', 
