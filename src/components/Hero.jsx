@@ -15,51 +15,57 @@ export default function Hero({ onOpenBookingModal }) {
           </h1>
 
           <p className="hero-serif-subtitle">
-            Best Bike Rental in <strong>Daman</strong> from ₹400/day. Swift Dzire Sedan & Maruti Ertiga 7-Seater Car Rental in <strong>Daman Local & All-India Drops</strong>. Free Devka hotel doorstep delivery!
+            <strong>Self Drive in Daman</strong> (DL Compulsory, Fuel Extra, Refundable Deposit on handover) &amp; <strong>Chauffeur Driven Cars</strong> for Fixed City Drops &amp; All-India Outstation Tours!
           </p>
 
-          <div className="hero-bullets-grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))' }}>
+          <div className="hero-bullets-grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))' }}>
             <div className="bullet-luxury-item">
               <i className="fas fa-motorcycle gold-bullet-icon"></i>
               <div>
-                <strong>TVS Jupiter Scooter</strong>
-                <p>₹400/Day • Daman Only</p>
+                <strong>TVS Jupiter (Self Drive)</strong>
+                <p>₹600/Day • Deposit ₹1,000 (Refundable)</p>
               </div>
             </div>
             <div className="bullet-luxury-item">
               <i className="fas fa-car gold-bullet-icon"></i>
               <div>
-                <strong>Swift Dzire Sedan</strong>
-                <p>Local ₹2,200 • ₹13/km (Min 300km)</p>
+                <strong>Swift Dzire (Sedan)</strong>
+                <p>Self Drive ₹2,200 (Dep. ₹3k) • ₹13/km</p>
               </div>
             </div>
             <div className="bullet-luxury-item">
               <i className="fas fa-shuttle-van gold-bullet-icon"></i>
               <div>
-                <strong>Maruti Ertiga 7-Seater</strong>
-                <p>Local ₹3,000 • ₹15/km (Min 300km)</p>
+                <strong>Ertiga VXI (7-Seater)</strong>
+                <p>Self Drive ₹2,800 (Dep. ₹4k) • ₹15/km</p>
               </div>
             </div>
           </div>
 
-          <div style={{ display: 'flex', gap: '14px', flexWrap: 'wrap', marginTop: '24px' }}>
+          <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', marginTop: '24px' }}>
             <button 
               className="btn btn-gold-luxury btn-sm"
-              onClick={() => onOpenBookingModal('Swift Dzire (Sedan)', '₹2,200/8H')}
+              onClick={() => onOpenBookingModal('Self Drive Inquiry', 'Jupiter ₹600 / Dzire ₹2200 / Ertiga ₹2800')}
             >
-              <i className="fas fa-car"></i> Swift Dzire (₹2,200)
+              <i className="fas fa-key"></i> 1st Sec: Self Drive
             </button>
             <button 
               className="btn btn-gold-luxury btn-sm"
-              onClick={() => onOpenBookingModal('Maruti Ertiga VXI (7-Seater)', '₹3,000/8H')}
+              onClick={() => onOpenBookingModal('With Driver Inquiry', 'Ertiga & Swift Dzire')}
             >
-              <i className="fas fa-shuttle-van"></i> Ertiga VXI (₹3,000)
+              <i className="fas fa-user-tie"></i> 2nd Sec: With Driver
             </button>
             <button 
               className="btn dark-whatsapp-btn btn-sm"
-              onClick={() => onOpenBookingModal('TVS Jupiter (Daman Only)', '₹400/day')}
+              onClick={() => onOpenBookingModal('Fixed Route Drop Inquiry', 'Vapi / Surat / Mumbai')}
             >
-              <i className="fab fa-whatsapp"></i> TVS Jupiter (₹400)
+              <i className="fas fa-route"></i> 3rd Sec: Fixed Drops
+            </button>
+            <button 
+              className="btn btn-gold-luxury btn-sm"
+              onClick={() => onOpenBookingModal('All India Outstation Inquiry', 'Dzire ₹13/km | Ertiga ₹15/km')}
+            >
+              <i className="fas fa-globe"></i> 4th Sec: All India
             </button>
           </div>
         </div>

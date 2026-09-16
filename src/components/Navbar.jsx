@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export default function Navbar({ onOpenBookingModal }) {
+export default function Navbar({ onOpenBookingModal, onOpenLoginModal, currentUser, onLogout }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const handleLinkClick = () => {
@@ -12,23 +12,23 @@ export default function Navbar({ onOpenBookingModal }) {
       {/* Top Announcement Ticker Line */}
       <div className="top-ticker-bar">
         <div className="ticker-track">
-          <span>Maruti Ertiga 7-Seater: ₹15/km (Min 300km/day + Toll & Parking)</span>
+          <span>Self Drive Daman: TVS Jupiter ₹600 (Dep. ₹1,000) • Swift Dzire ₹2,200 (Dep. ₹3,000) • Ertiga ₹2,800 (Dep. ₹4,000)</span>
           <span className="ticker-dot">•</span>
-          <span>Swift Dzire Sedan: ₹13/km (Min 300km/day + Toll & Parking)</span>
+          <span>DL Compulsory &amp; Fuel Not Included • Deposit Refunded on Drop</span>
           <span className="ticker-dot">•</span>
-          <span>Helmet Included with Every Bike in Daman</span>
+          <span>Fixed City Drops: Vapi Station Drop ₹700 (Dzire) / ₹900 (Ertiga)</span>
           <span className="ticker-dot">•</span>
-          <span>Booking Confirmed in 30 Minutes</span>
+          <span>All India Outstation: Swift Dzire ₹13/km • Ertiga 7-Seater ₹15/km (Min 300km/day + Toll &amp; Parking)</span>
           <span className="ticker-dot">•</span>
           <span>Santosh Abhale (+91 93098 20905)</span>
           <span className="ticker-dot">•</span>
-          <span>Maruti Ertiga 7-Seater: ₹15/km (Min 300km/day + Toll & Parking)</span>
+          <span>Self Drive Daman: TVS Jupiter ₹600 (Dep. ₹1,000) • Swift Dzire ₹2,200 (Dep. ₹3,000) • Ertiga ₹2,800 (Dep. ₹4,000)</span>
           <span className="ticker-dot">•</span>
-          <span>Swift Dzire Sedan: ₹13/km (Min 300km/day + Toll & Parking)</span>
+          <span>DL Compulsory &amp; Fuel Not Included • Deposit Refunded on Drop</span>
           <span className="ticker-dot">•</span>
-          <span>Helmet Included with Every Bike in Daman</span>
+          <span>Fixed City Drops: Vapi Station Drop ₹700 (Dzire) / ₹900 (Ertiga)</span>
           <span className="ticker-dot">•</span>
-          <span>Booking Confirmed in 30 Minutes</span>
+          <span>All India Outstation: Swift Dzire ₹13/km • Ertiga 7-Seater ₹15/km (Min 300km/day + Toll &amp; Parking)</span>
           <span className="ticker-dot">•</span>
           <span>Santosh Abhale (+91 93098 20905)</span>
           <span className="ticker-dot">•</span>
@@ -51,14 +51,37 @@ export default function Navbar({ onOpenBookingModal }) {
           {/* Desktop Menu - Hidden on screens <= 992px */}
           <ul className="nav-menu desktop-menu-only">
             <li><a href="#hero" className="nav-link active">Home</a></li>
-            <li><a href="#fleet" className="nav-link">Bikes</a></li>
-            <li><a href="#fleet" className="nav-link">Cars</a></li>
+            <li><a href="#fleet" className="nav-link">Bikes &amp; Cars</a></li>
+            <li><a href="#offers" className="nav-link">Coupons &amp; Offers</a></li>
             <li><a href="#calculator" className="nav-link">Fare Calculator</a></li>
             <li><a href="#payment-methods" className="nav-link">Payments</a></li>
             <li><a href="#reviews" className="nav-link">Reviews</a></li>
           </ul>
 
           <div className="nav-actions">
+            {currentUser ? (
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <span style={{ fontSize: '0.84rem', fontWeight: 700, color: 'var(--gold-dark)', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                  <i className="fas fa-user-circle" style={{ fontSize: '1.2rem' }}></i> {currentUser.name.split(' ')[0]}
+                </span>
+                <button 
+                  className="btn btn-sm"
+                  style={{ background: 'rgba(239, 68, 68, 0.1)', color: '#dc2626', border: '1px solid rgba(239, 68, 68, 0.3)', padding: '4px 10px', borderRadius: '8px' }}
+                  onClick={onLogout}
+                  title="Logout"
+                >
+                  Logout
+                </button>
+              </div>
+            ) : (
+              <button 
+                className="btn btn-gold-luxury btn-sm"
+                onClick={onOpenLoginModal}
+              >
+                <i className="fas fa-user"></i> Login
+              </button>
+            )}
+
             <button 
               className="btn dark-whatsapp-btn desktop-only-btn" 
               onClick={() => onOpenBookingModal('Quick Navigation Inquiry', '')}
@@ -136,6 +159,17 @@ export default function Navbar({ onOpenBookingModal }) {
               <a href="#reviews" className="sidebar-link" onClick={handleLinkClick}>
                 <i className="fas fa-star"></i> Reviews & Ratings
               </a>
+            </li>
+            <li>
+              {currentUser ? (
+                <a href="#logout" className="sidebar-link" onClick={(e) => { e.preventDefault(); handleLinkClick(); onLogout(); }}>
+                  <i className="fas fa-sign-out-alt" style={{ color: '#ef4444' }}></i> Logout ({currentUser.name.split(' ')[0]})
+                </a>
+              ) : (
+                <a href="#login" className="sidebar-link" onClick={(e) => { e.preventDefault(); handleLinkClick(); onOpenLoginModal(); }}>
+                  <i className="fas fa-user-lock" style={{ color: 'var(--gold-dark)' }}></i> Login
+                </a>
+              )}
             </li>
           </ul>
         </nav>

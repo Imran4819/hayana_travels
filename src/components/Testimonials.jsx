@@ -194,16 +194,25 @@ export default function Testimonials({ onOpenBookingModal }) {
           </div>
         </div>
 
-        {/* CAROUSEL DOT INDICATORS */}
-        <div className="carousel-dots" style={{ marginTop: '24px' }}>
-          {reviews.map((_, idx) => (
-            <button 
-              key={idx} 
-              className={`dot ${currentIndex === idx ? 'active' : ''}`} 
-              onClick={() => setCurrentIndex(idx)}
-              aria-label={`Go to slide ${idx + 1}`}
-            />
-          ))}
+        {/* CAROUSEL DOT INDICATORS - STRICTLY 4 CIRCLE DOTS COVERING ALL REVIEWS */}
+        <div className="carousel-dots" style={{ marginTop: '24px', display: 'flex', justifyContent: 'center', gap: '8px' }}>
+          {[0, 1, 2, 3].map((dotIdx) => {
+            const totalReviews = reviews.length || 1;
+            const activeDot = Math.min(3, Math.floor((currentIndex / totalReviews) * 4));
+            const isActive = activeDot === dotIdx;
+
+            return (
+              <button 
+                key={dotIdx} 
+                className={`dot ${isActive ? 'active' : ''}`} 
+                onClick={() => {
+                  const targetIdx = Math.floor((dotIdx / 4) * totalReviews);
+                  setCurrentIndex(targetIdx);
+                }}
+                aria-label={`Go to review group ${dotIdx + 1}`}
+              />
+            );
+          })}
         </div>
 
         {/* SHARE EXPERIENCE CALL-TO-ACTION */}

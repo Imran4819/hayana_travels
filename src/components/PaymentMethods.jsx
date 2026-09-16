@@ -181,38 +181,7 @@ export default function PaymentMethods() {
             <span style={{ fontSize: '0.78rem', color: '#00baf2', fontWeight: 800 }}>Tap to Open App</span>
           </div>
 
-          {/* Credit & Debit Cards */}
-          <div 
-            onClick={() => handleCopy('Cards Accepted: Visa, Mastercard, RuPay at Handover', 'Cards Info')}
-            style={{
-              background: '#ffffff',
-              border: '1.5px solid var(--border-cream)',
-              borderRadius: 'var(--radius-lg)',
-              padding: '20px 16px',
-              textAlign: 'center',
-              cursor: 'pointer',
-              transition: 'var(--transition)',
-              boxShadow: '0 4px 14px rgba(0,0,0,0.04)'
-            }}
-            className="payment-card-hover"
-          >
-            <div style={{
-              width: '52px',
-              height: '52px',
-              borderRadius: '50%',
-              background: 'linear-gradient(135deg, #d97706, #b45309)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              margin: '0 auto 12px',
-              color: '#ffffff',
-              fontSize: '1.4rem'
-            }}>
-              <i className="fas fa-credit-card"></i>
-            </div>
-            <h4 style={{ fontSize: '1rem', color: 'var(--text-dark)', fontWeight: 700, marginBottom: '4px' }}>Cards Accepted</h4>
-            <span style={{ fontSize: '0.78rem', color: 'var(--gold-dark)', fontWeight: 800 }}>Credit & Debit Cards</span>
-          </div>
+
 
           {/* Net Banking */}
           <div 

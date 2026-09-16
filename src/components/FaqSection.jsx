@@ -5,28 +5,24 @@ export default function FaqSection() {
 
   const faqs = [
     {
-      q: 'How do I book bike rental in Daman or car rental in Daman with Hayana Travels?',
-      a: 'Simply call or WhatsApp Santosh Abhale at +91 93098 20905. You can reserve a TVS Jupiter bike in Daman starting at ₹400/day, Swift Dzire sedan, or Maruti Ertiga 7-seater car. We deliver directly to your hotel in Devka Beach, Jampore Beach, and Daman City.'
+      q: 'What are the Self Drive rates & deposit rules in Daman (1st Section)?',
+      a: 'Self Drive rates: TVS Jupiter Scooter @ ₹600/day (Advance Deposit ₹1,000), Swift Dzire Sedan @ ₹2,200/8h (Advance Deposit ₹3,000), and Ertiga VXI 7-Seater @ ₹2,800/8h (Advance Deposit ₹4,000). A valid original Driving License (DL) is COMPULSORY. Fuel is NOT included (customer pays fuel). The advance security deposit is fully refunded when you drop the vehicle back.'
     },
     {
-      q: 'Which travels agency is best for bike in Daman and car in Daman?',
-      a: 'Hayana Travels (located near Miramar Hotel, Devka Beach Road, Daman) is the top 5.0-star rated travel agency in Daman for two-wheeler bike rentals, local taxi drops, and All-India outstation tours.'
+      q: 'When is the advance security deposit refunded?',
+      a: 'The advance security deposit (₹1,000 for Jupiter, ₹3,000 for Dzire, ₹4,000 for Ertiga) is returned immediately to your UPI/bank/cash upon vehicle handover/drop after checking the vehicle.'
     },
     {
-      q: 'What documents are required to rent a bike in Daman?',
-      a: 'You need a valid original Driving License (DL) and a government photo ID (Aadhar Card, Passport, or Voter ID). Document verification takes 2 minutes.'
+      q: 'What are the Fixed Drop rates for Vapi, Surat & Mumbai (3rd Section)?',
+      a: 'Fixed Drop rates: Swift Dzire Sedan: Daman Local ₹500, Vapi Station Drop ₹700, Surat Drop ₹3,000, Mumbai Drop ₹4,200. Maruti Ertiga VXI 7-Seater: Daman Local ₹600, Vapi Station Drop ₹900, Surat Drop ₹3,500, Mumbai Drop ₹5,500.'
     },
     {
-      q: 'What are the outstation rates for Maruti Ertiga and Swift Dzire car in Daman?',
-      a: 'Our outstation charges are: Maruti Ertiga 7-Seater @ ₹15/km, and Swift Dzire Sedan @ ₹13/km. Both cars require a minimum running limit of 300 km / day. Toll tax and parking charges are extra as per actual receipts.'
+      q: 'What are the All-India Outstation Per-KM rates (4th Section)?',
+      a: 'Outstation rates: Swift Dzire @ ₹13 / km and Maruti Ertiga 7-Seater @ ₹15 / km. Minimum running limit is 300 km / day. Toll tax and parking charges are extra as per actual receipts.'
     },
     {
-      q: 'Are helmets provided with bike rentals in Daman?',
-      a: 'Yes, we provide 2 sanitized helmets (1 rider + 1 pillion) complimentary with every TVS Jupiter scooter rental in Daman.'
-    },
-    {
-      q: 'How does hotel doorstep delivery work for bike in Daman?',
-      a: 'Simply share your hotel or resort address in Daman during booking on WhatsApp (+91 93098 20905). Our executive delivers the vehicle directly to your location at your preferred time.'
+      q: 'How do I book with Hayana Travels?',
+      a: 'Call or WhatsApp Santosh Abhale directly at +91 93098 20905 to reserve your vehicle in 2 minutes. Doorstep delivery is available across Devka Beach, Jampore Beach, and all hotels in Daman.'
     }
   ];
 
@@ -34,7 +30,7 @@ export default function FaqSection() {
     <section className="section" id="faq">
       <div className="container">
         <div className="section-header">
-          <span className="section-subtitle">GOT QUESTIONS?</span>
+          <span className="section-subtitle">CLEAR RENTAL RULES & ANSWERS</span>
           <h2 className="section-title">Frequently Asked Questions</h2>
         </div>
 

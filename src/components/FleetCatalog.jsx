@@ -30,21 +30,6 @@ export default function FleetCatalog({ onOpenBookingModal, onSelectVehicleForCal
                   {item.type} • ₹{item.rateDay.toLocaleString('en-IN')} {item.rateUnit}
                 </p>
 
-                {/* RATE CARD BREAKDOWN */}
-                {item.ratesList && item.ratesList.length > 0 && (
-                  <div style={{ marginBottom: '14px', padding: '10px 14px', background: 'rgba(2, 132, 199, 0.05)', borderRadius: '12px', border: '1px solid rgba(2, 132, 199, 0.2)' }}>
-                    <div style={{ fontSize: '0.75rem', fontWeight: 800, color: 'var(--blue-dark)', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '6px' }}>
-                      <i className="fas fa-tags" style={{ marginRight: '6px', color: 'var(--gold-dark)' }}></i> Rate Card Breakdown:
-                    </div>
-                    {item.ratesList.map((r, idx) => (
-                      <div key={idx} style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.84rem', padding: '3px 0', borderBottom: idx < item.ratesList.length - 1 ? '1px dashed var(--border-cream)' : 'none' }}>
-                        <span style={{ color: 'var(--text-dark)', fontWeight: 500 }}>{r.route}</span>
-                        <strong style={{ color: 'var(--gold-dark)' }}>{r.price}</strong>
-                      </div>
-                    ))}
-                  </div>
-                )}
-                
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px', padding: '10px 14px', background: '#faf8f5', borderRadius: '12px', border: '1px solid var(--border-cream)', marginBottom: '16px', fontSize: '0.83rem' }}>
                   <div style={{ color: 'var(--text-dark)' }}><i className="fas fa-users" style={{ color: 'var(--gold-dark)', marginRight: '6px' }}></i> {item.seats}</div>
                   <div style={{ color: 'var(--text-dark)' }}><i className="fas fa-gas-pump" style={{ color: 'var(--gold-dark)', marginRight: '6px' }}></i> {item.fuel}</div>
@@ -80,4 +65,3 @@ export default function FleetCatalog({ onOpenBookingModal, onSelectVehicleForCal
     </section>
   );
 }
-
