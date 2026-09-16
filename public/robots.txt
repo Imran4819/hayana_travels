@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Sitemap Index for Googlebot & Bingbot
+Sitemap: https://hayanatravels.com/sitemap.xml
