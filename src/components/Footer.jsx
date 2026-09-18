@@ -11,11 +11,11 @@ export default function Footer({ onOpenBookingModal }) {
           <div className="footer-col">
             <a href="#" className="brand-logo" style={{ marginBottom: '16px' }}>
               <div className="logo-badge-wrapper">
-                <img src="/logo.png" alt="Hayana Travels Logo" className="brand-logo-img" />
+                <img src="/logo.png" alt="Hayana Tours and Travels Logo" className="brand-logo-img" />
               </div>
               <div className="brand-title-box">
                 <span className="brand-title-main">HAYANA</span>
-                <span className="brand-title-sub">TRAVELS</span>
+                <span className="brand-title-sub">TOURS &amp; TRAVELS</span>
               </div>
             </a>
 
@@ -144,7 +144,7 @@ export default function Footer({ onOpenBookingModal }) {
         </div>
 
         <div className="footer-bottom">
-          <p>© 2026 Hanaya Tour & Travels. Owned & Managed by Santosh Abhale. Near Miramar Hotel, Devka, Daman. Call / WhatsApp: +91 93098 20905.</p>
+          <p>© 2026 Hayana Tours &amp; Travels. Owned &amp; Managed by Santosh Abhale. Near Miramar Hotel, Devka, Daman. Call / WhatsApp: +91 93098 20905.</p>
         </div>
       </div>
     </footer>
