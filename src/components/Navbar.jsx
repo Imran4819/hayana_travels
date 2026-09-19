@@ -38,13 +38,13 @@ export default function Navbar({ onOpenBookingModal, onOpenLoginModal, currentUs
       {/* Main Navbar Header */}
       <header className="navbar">
         <div className="nav-container">
-          <a href="#" className="brand-logo" aria-label="Hayana Travels Home">
+          <a href="#" className="brand-logo" aria-label="Hayana Tours and Travels Home">
             <div className="logo-badge-wrapper">
-              <img src="/logo.png" alt="Hayana Travels Logo" className="brand-logo-img" />
+              <img src="/logo.png" alt="Hayana Tours and Travels Logo" className="brand-logo-img" />
             </div>
             <div className="brand-title-box">
               <span className="brand-title-main">HAYANA</span>
-              <span className="brand-title-sub">TRAVELS</span>
+              <span className="brand-title-sub">TOURS &amp; TRAVELS</span>
             </div>
           </a>
 
@@ -112,11 +112,11 @@ export default function Navbar({ onOpenBookingModal, onOpenLoginModal, currentUs
         <div className="sidebar-header">
           <div className="brand-logo">
             <div className="logo-badge-wrapper" style={{ padding: '3px 6px' }}>
-              <img src="/logo.png" alt="Hayana Travels Logo" className="brand-logo-img" style={{ height: '32px' }} />
+              <img src="/logo.png" alt="Hayana Tours and Travels Logo" className="brand-logo-img" style={{ height: '32px' }} />
             </div>
             <div className="brand-title-box">
               <span className="brand-title-main" style={{ fontSize: '1.05rem' }}>HAYANA</span>
-              <span className="brand-title-sub" style={{ fontSize: '0.62rem' }}>TRAVELS</span>
+              <span className="brand-title-sub" style={{ fontSize: '0.62rem' }}>TOURS &amp; TRAVELS</span>
             </div>
           </div>
           <button 

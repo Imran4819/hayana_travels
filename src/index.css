@@ -1407,4 +1407,55 @@ body {
   box-shadow: 0 12px 25px rgba(245, 158, 11, 0.15) !important;
 }
 
+/* GALLERY CAROUSEL TRACK */
+.gallery-carousel-track {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  padding: 12px 6px 24px 6px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.gallery-carousel-track::-webkit-scrollbar {
+  display: none;
+}
+.gallery-carousel-item {
+  flex: 0 0 clamp(280px, 32vw, 360px);
+  min-width: 280px;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+@media (max-width: 768px) {
+  .gallery-carousel-item {
+    flex: 0 0 85vw;
+    min-width: 260px;
+  }
+}
+
+/* RATING HEADER BANNER & BADGE CARD ALIGNMENT */
+.rating-header-banner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 36px;
+  flex-wrap: wrap;
+}
+.rating-header-left {
+  flex: 1;
+  min-width: 280px;
+}
+.rating-badge-card {
+  padding: 18px 24px;
+  border-radius: var(--radius-lg);
+  text-align: center;
+  flex-shrink: 0;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
+}
+
+
+
 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import AddPhotoModal from './AddPhotoModal';
 
 const INITIAL_PHOTOS = [
@@ -75,10 +75,38 @@ export default function TravelGallery({ currentUser }) {
   const [activeFilter, setActiveFilter] = useState('all');
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(null);
+  const [isPaused, setIsPaused] = useState(false);
+  const carouselRef = useRef(null);
 
   useEffect(() => {
     localStorage.setItem('hayana_gallery_photos', JSON.stringify(photos));
   }, [photos]);
+
+  // AUTO SCROLL CAROUSEL EFFECT
+  useEffect(() => {
+    if (isPaused || lightboxIndex !== null) return;
+
+    const interval = setInterval(() => {
+      if (carouselRef.current) {
+        const { scrollLeft, scrollWidth, clientWidth } = carouselRef.current;
+        // Reset to start if near end, else scroll by 340px
+        if (scrollLeft + clientWidth >= scrollWidth - 15) {
+          carouselRef.current.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+          carouselRef.current.scrollBy({ left: 340, behavior: 'smooth' });
+        }
+      }
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [isPaused, lightboxIndex, activeFilter, photos]);
+
+  const handleFilterChange = (filterId) => {
+    setActiveFilter(filterId);
+    if (carouselRef.current) {
+      carouselRef.current.scrollTo({ left: 0, behavior: 'smooth' });
+    }
+  };
 
   const handleAddPhoto = (newPhoto) => {
     setPhotos(prev => [newPhoto, ...prev]);
@@ -134,7 +162,7 @@ export default function TravelGallery({ currentUser }) {
               <button
                 key={tab.id}
                 type="button"
-                onClick={() => setActiveFilter(tab.id)}
+                onClick={() => handleFilterChange(tab.id)}
                 style={{
                   padding: '9px 16px',
                   borderRadius: '12px',
@@ -169,87 +197,97 @@ export default function TravelGallery({ currentUser }) {
           </div>
         </div>
 
-        {/* PHOTO GALLERY GRID */}
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-          gap: '24px'
-        }}>
-          {filteredPhotos.map((photo, index) => (
-            <div
-              key={photo.id}
-              className="specialty-card-luxury"
-              onClick={() => setLightboxIndex(index)}
-              style={{
-                cursor: 'pointer',
-                padding: 0,
-                overflow: 'hidden',
-                position: 'relative',
-                transition: 'transform 0.3s ease, box-shadow 0.3s ease'
-              }}
-            >
-              <div style={{ position: 'relative', height: '240px', width: '100%', overflow: 'hidden' }}>
-                <img
-                  src={photo.image}
-                  alt={photo.title}
-                  loading="lazy"
-                  style={{
-                    width: '100%',
-                    height: '100%',
-                    objectFit: 'cover',
-                    display: 'block',
-                    transition: 'transform 0.4s ease'
-                  }}
-                />
-                <span className="card-badge-gold" style={{ top: '12px', right: '12px', fontSize: '0.74rem' }}>
-                  <i className="fas fa-map-marker-alt" style={{ marginRight: '4px' }}></i> {photo.location}
-                </span>
-
-                {/* DELETE BUTTON FOR LOGGED IN USERS */}
-                {currentUser && (
-                  <button
-                    type="button"
-                    onClick={(e) => handleDeletePhoto(photo.id, photo.title, e)}
-                    title="Delete Photo"
+        {/* AUTOMATIC SINGLE LINE CAROUSEL TRACK */}
+        <div 
+          style={{ position: 'relative', margin: '20px 0 0' }}
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+          onTouchStart={() => setIsPaused(true)}
+          onTouchEnd={() => setIsPaused(false)}
+        >
+          {/* CAROUSEL TRACK */}
+          <div ref={carouselRef} className="gallery-carousel-track">
+            {filteredPhotos.map((photo, index) => (
+              <div
+                key={photo.id}
+                className="specialty-card-luxury gallery-carousel-item"
+                onClick={() => setLightboxIndex(index)}
+                style={{
+                  cursor: 'pointer',
+                  padding: 0,
+                  overflow: 'hidden',
+                  position: 'relative',
+                  transition: 'transform 0.3s ease, box-shadow 0.3s ease'
+                }}
+              >
+                <div style={{ position: 'relative', height: '240px', width: '100%', overflow: 'hidden' }}>
+                  <img
+                    src={photo.image}
+                    alt={photo.title}
+                    loading="lazy"
                     style={{
-                      position: 'absolute',
-                      top: '12px',
-                      left: '12px',
-                      background: '#ef4444',
-                      color: '#ffffff',
-                      border: 'none',
-                      borderRadius: '8px',
-                      padding: '6px 10px',
-                      fontSize: '0.78rem',
-                      fontWeight: 700,
-                      cursor: 'pointer',
-                      zIndex: 5
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover',
+                      display: 'block',
+                      transition: 'transform 0.4s ease'
                     }}
-                  >
-                    <i className="fas fa-trash-alt"></i>
-                  </button>
-                )}
-              </div>
+                  />
+                  <span className="card-badge-gold" style={{ top: '12px', right: '12px', fontSize: '0.74rem' }}>
+                    <i className="fas fa-map-marker-alt" style={{ marginRight: '4px' }}></i> {photo.location}
+                  </span>
 
-              <div style={{ padding: '20px' }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '6px' }}>
-                  <span className="specialty-badge-tag gold-badge" style={{ fontSize: '0.72rem' }}>
-                    {photo.category.toUpperCase().replace('-', ' ')}
-                  </span>
-                  <span style={{ fontSize: '0.76rem', color: '#64748b', fontWeight: 600 }}>
-                    <i className="far fa-calendar-alt" style={{ marginRight: '4px' }}></i> {photo.date}
-                  </span>
+                  {/* DELETE BUTTON FOR LOGGED IN USERS */}
+                  {currentUser && (
+                    <button
+                      type="button"
+                      onClick={(e) => handleDeletePhoto(photo.id, photo.title, e)}
+                      title="Delete Photo"
+                      style={{
+                        position: 'absolute',
+                        top: '12px',
+                        left: '12px',
+                        background: '#ef4444',
+                        color: '#ffffff',
+                        border: 'none',
+                        borderRadius: '8px',
+                        padding: '6px 10px',
+                        fontSize: '0.78rem',
+                        fontWeight: 700,
+                        cursor: 'pointer',
+                        zIndex: 5
+                      }}
+                    >
+                      <i className="fas fa-trash-alt"></i>
+                    </button>
+                  )}
                 </div>
 
-                <h3 className="card-title-serif" style={{ fontSize: '1.25rem', margin: '4px 0 8px', color: '#0f172a' }}>
-                  {photo.title}
-                </h3>
-                <p className="card-desc" style={{ fontSize: '0.84rem', color: '#475569', margin: 0, lineHeight: '1.45' }}>
-                  {photo.caption}
-                </p>
+                <div style={{ padding: '20px' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '6px' }}>
+                    <span className="specialty-badge-tag gold-badge" style={{ fontSize: '0.72rem' }}>
+                      {photo.category.toUpperCase().replace('-', ' ')}
+                    </span>
+                    <span style={{ fontSize: '0.76rem', color: '#64748b', fontWeight: 600 }}>
+                      <i className="far fa-calendar-alt" style={{ marginRight: '4px' }}></i> {photo.date}
+                    </span>
+                  </div>
+
+                  <h3 className="card-title-serif" style={{ fontSize: '1.25rem', margin: '4px 0 8px', color: '#0f172a' }}>
+                    {photo.title}
+                  </h3>
+                  <p className="card-desc" style={{ fontSize: '0.84rem', color: '#475569', margin: 0, lineHeight: '1.45' }}>
+                    {photo.caption}
+                  </p>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
+
+          {/* CAROUSEL INSTRUCTION & NAV INDICATOR */}
+          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '8px', marginTop: '14px', fontSize: '0.82rem', color: '#64748b', fontWeight: 600 }}>
+            <span><i className="fas fa-sync-alt fa-spin" style={{ fontSize: '0.75rem', color: '#d97706', marginRight: '6px' }}></i> Auto-scrolling gallery • Hover or touch to pause</span>
+          </div>
         </div>
 
         {/* LIGHTBOX MODAL FULLSCREEN VIEW */}
